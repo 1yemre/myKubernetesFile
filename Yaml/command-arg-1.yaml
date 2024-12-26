@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-org
+spec:
+  containers:
+    - name: command-arg-container
+      image: busybox
+      command: ["printenv","hostname","kubernetes_port","kubernetes_service_host","home"]
+      RestartPolicy : Never

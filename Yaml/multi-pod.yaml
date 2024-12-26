@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: comultipod
+spec:
+  containers:
+    - name: container1
+      image: busybox
+      command:
+        - "/bin/sh"
+        - "-c"
+        - "echo Hello Bro, I am container1 - Date: $(date) >> /readmeBLUE; sleep 3600"
+    - name: container2
+      image: alpine
+      command:
+        - "/bin/sh"
+        - "-c"
+        - "echo Hello Bro, I am container2 - Date: $(date) >> /readmeBLUE; sleep 3600"
+    - name: container3
+      image: nginx
+      ports :
+         - containerPort: 80       
