@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    db: mysql
+  annotations:  # "annotations" doğru şekilde düzeltilmeli
+    owner: "Murat Aksu"
+    version: "1.1.0"
+    imageregistry: "https://ub.docker.com"
+    kbarticle: "https://kb.docs.example.com/kB123456"
+spec:
+  containers:
+    - name: mysql-container
+      image: mysql:5.6
+      env:
+        - name: MYSQL_ROOT_PASSWORD  # "-" eklemeyi unutmayın ve değer adlarında yazım hatası yok
+          value: "onetwothree!!"
+      ports:
+        - containerPort: 3306  # "-" ile düzgün şekilde belirtilmeli
+    - name: phpmyadmin
+      image: phpmyadmin/phpmyadmin
+      env:
+        - name: PMA_HOST
+          value: "mysql"
+        - name: PMA_PORT
+          value: "3306"
+      ports:
+        - containerPort: 80
