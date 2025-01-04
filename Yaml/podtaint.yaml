@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-taint  
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  nodeSelector:
+    dedicated: devops
+  tolerations:  
+    - key: "cpu_speed"
+      operator: "Exists"  
+      effect: "NoSchedule"
